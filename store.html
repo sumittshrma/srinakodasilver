@@ -12,46 +12,74 @@
 <body class="bg-gradient-to-r from-[#08111a] via-[#1B263B] to-[#131923]">
 
     <!-- Header Section (Wrapper with smooth transition for sticky behavior) -->
-    <header id="main-header"
-        class="w-full fixed top-0 left-0 z-40 transition-transform duration-300 ease-in-out bg-[#1B263B]/75 backdrop-blur-md shadow-sm">
-        <!-- 1. Top Main Bar -->
-        <div id="top-bar" class="w-full  border-b border-[#778DA9]/30">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
-                    <!-- Left Group: Back Button + Hamburger Icon (Mobile Only) + Logo -->
-                    <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+   <header id="main-header"
+  class="w-full fixed top-0 left-0 z-40 transition-transform duration-300 ease-in-out bg-[#1B263B]/75 backdrop-blur-md shadow-sm">
+  
+  <!-- 1. Top Main Bar -->
+  <div id="top-bar" class="w-full border-b border-[#778DA9]/30 py-2 sm:py-0">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Layout Container: Vertical Stack on Mobile, Horizontal Flex on Desktop -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between h-auto md:h-20 gap-3 md:gap-4">
+        
+        <!-- Row 1 (Mobile): Brand Logo & Left Controls (Left) | Quick Actions (Right) -->
+        <div class="flex items-center justify-between w-full md:w-auto shrink-0">
+          
+          <!-- Left Group: Back Button + Hamburger + Logo -->
+          <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+            <!-- Back Button to Home -->
+            <a href="/" aria-label="Go to Home" title="Go to Home"
+              class="p-1.5 text-[#E0E1DD] hover:text-[#E0E1DD] transition-colors rounded-md flex items-center justify-center">
+              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+            </a>
 
-                        <!-- Back Button to Home -->
-                        <a href="/" aria-label="Go to Home" title="Go to Home"
-                            class="p-1.5 text-[#E0E1DD] hover:text-[#E0E1DD] transition-colors rounded-md flex items-center justify-center">
-                            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                            </svg>
-                        </a>
+            <!-- Mobile Menu Toggle Button -->
+            <button 
+              id="mobile-menu-btn"
+              type="button" 
+              aria-label="Open Navigation Menu"
+              class="md:hidden p-1.5 text-[#778DA9] hover:text-[#E0E1DD] focus:outline-none rounded-md cursor-pointer"
+            >
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
 
-                        <!-- Mobile Menu Toggle Button -->
-          <button 
-            id="mobile-menu-btn"
-            type="button" 
-            aria-label="Open Navigation Menu"
-            class="md:hidden p-1.5 text-[#778DA9] hover:text-[#E0E1DD] focus:outline-none rounded-md cursor-pointer"
-          >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-          </button>
+            <!-- Brand Logo -->
+            <a href="/" aria-label="Sri Nakoda Silver Home" class="flex items-center">
+              <span class="text-base sm:text-2xl font-serif font-bold text-[#778DA9] tracking-wider">
+                Sri Nakoda Silver<span class="text-[#E0E1DD]">.</span>
+              </span>
+            </a>
+          </div>
 
-          <!-- Brand Logo -->
-          <a href="/" aria-label="Sri Nakoda Silver Home" class="flex items-center">
-            <span class="text-base sm:text-2xl font-serif font-bold text-[#778DA9] tracking-wider">
-              Sri Nakoda Silver<span class="text-[#E0E1DD]">.</span>
-            </span>
-          </a>
+          <!-- Quick Actions (Mobile View Only) -->
+          <div class="flex md:hidden items-center gap-2 shrink-0">
+            <!-- Call Icon Button -->
+            <a href="tel:+919392559904" aria-label="Call Store" title="Call Store"
+              class="p-2 text-[#1754a3] bg-[#6a95cc] hover:bg-[#1754a3] hover:text-[#E0E1DD] rounded-full border border-[#1754a3]/60 transition-colors flex items-center justify-center">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+            </a>
+
+            <!-- WhatsApp Icon Button -->
+            <a href="https://wa.me/919392559904?text=Hi%20Sri%20Nakoda%20Silver,%20I%20have%20an%20inquiry"
+              target="_blank" aria-label="WhatsApp Store" title="WhatsApp Us"
+              class="p-2 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-full border border-emerald-200/60 transition-colors flex items-center justify-center">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+              </svg>
+            </a>
+          </div>
+
         </div>
 
-                    <!-- Search Bar -->
-        <div class="flex-1 max-w-xl mx-2 sm:mx-4">
+        <!-- Row 2 (Mobile): Search Bar Full-Width | Desktop: Centered Flex Item -->
+        <div class="w-full md:flex-1 md:max-w-xl md:mx-4">
           <form onsubmit="return false;" method="GET" role="search" class="relative flex items-center">
             <label for="site-search" class="sr-only">Search jewellery, silver, gifts</label>
             
@@ -86,34 +114,34 @@
           </form>
         </div>
 
-                    <!-- Action Buttons (Right Side): Call & WhatsApp Features -->
-                    <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-                        <!-- Call Icon Button -->
-                        <a href="tel:+919392559904" aria-label="Call Store" title="Call Store"
-                            class="p-2 text-[#1754a3] bg-[#6a95cc] hover:bg-[#1754a3] hover:text-[#E0E1DD] rounded-full border border-[#1754a3]/60 transition-colors flex items-center justify-center">
-                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                            </svg>
-                        </a>
+        <!-- Desktop Quick Action Buttons (Hidden on Mobile) -->
+        <div class="hidden md:flex items-center gap-2 sm:gap-3 shrink-0">
+          <!-- Call Icon Button -->
+          <a href="tel:+919392559904" aria-label="Call Store" title="Call Store"
+            class="p-2 text-[#1754a3] bg-[#6a95cc] hover:bg-[#1754a3] hover:text-[#E0E1DD] rounded-full border border-[#1754a3]/60 transition-colors flex items-center justify-center">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+          </a>
 
-                        <!-- WhatsApp Icon Button -->
-                        <a href="https://wa.me/919392559904?text=Hi%20Sri%20Nakoda%20Silver,%20I%20have%20an%20inquiry"
-                            target="_blank" aria-label="WhatsApp Store" title="WhatsApp Us"
-                            class="p-2 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-full border border-emerald-200/60 transition-colors flex items-center justify-center">
-                            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
-                                <path
-                                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
-                            </svg>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
+          <!-- WhatsApp Icon Button -->
+          <a href="https://wa.me/919392559904?text=Hi%20Sri%20Nakoda%20Silver,%20I%20have%20an%20inquiry"
+            target="_blank" aria-label="WhatsApp Store" title="WhatsApp Us"
+            class="p-2 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-full border border-emerald-200/60 transition-colors flex items-center justify-center">
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+            </svg>
+          </a>
         </div>
 
-        <!-- 2. Bottom Categories Navigation Bar with Hover Dropdowns -->
-  <nav aria-label="Category Navigation" class="border-t border-[#778DA9]/30  hidden md:block">
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Bottom Categories Navigation Bar with Hover Dropdowns -->
+  <nav aria-label="Category Navigation" class="border-t border-[#778DA9]/30 hidden md:block">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <ul class="flex items-center justify-between py-2.5 text-xs font-semibold text-[#778DA9] tracking-wider uppercase">
         

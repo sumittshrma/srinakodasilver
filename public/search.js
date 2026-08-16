@@ -5,7 +5,7 @@
   if (window.__LIVE_SEARCH_INITIALIZED) return;
   window.__LIVE_SEARCH_INITIALIZED = true;
 
-   (Country Code 91 ke saath)
+  // Country Code 91 ke saath
   const WHATSAPP_NUMBER = "91XXXXXXXXXX"; 
 
   // Photo Modal + WhatsApp Button Creator
@@ -58,7 +58,7 @@
 
   function applyUniversalSearch() {
     const path = window.location.pathname.toLowerCase();
-    const isIndexPage = path.endsWith('/') || path.endsWith('/index.html') || path.includes('index.html');
+    const isIndexPage = path === '/' || path.endsWith('/index.html') || path.endsWith('/') || path.includes('index');
 
     const searchInputs = document.querySelectorAll('input[type="search"]');
     if (!searchInputs.length) return;
@@ -126,13 +126,13 @@
     // CASE 2: INDEX PAGE ONLY (Sitewide Fetch Search)
     // ==========================================
     const sitePages = [
-      'jewellery.html',
-      'plain.html',
-      'antique.html',
-      'woodenitems.html',
-      'gold-polished.html',
-      'templejewellery.html',
-      'store.html'
+      '/jewellery.html',
+      '/plain.html',
+      '/antique.html',
+      '/woodenitems.html',
+      '/gold-polished.html',
+      '/templejewellery.html',
+      '/store.html'
     ];
 
     const siteIndexCache = {};
@@ -211,6 +211,7 @@
       }
 
       const cardsHtml = items.map(it => {
+        const categoryName = it.page.replace('/', '').replace('.html', '');
         return `
           <div onclick="window.__showImagePreview('${escapeHtml(it.img)}', '${escapeHtml(it.title)}')" class="cursor-pointer block product-card-link p-3 sm:p-4 bg-[#0D1B2A] rounded-2xl border border-[#415A6A]/40 hover:border-[#778DA9] hover:scale-[1.02] transition-all text-inherit">
             <div class="flex items-center gap-3">
@@ -218,7 +219,7 @@
               <div>
                 <h3 class="font-semibold text-sm text-[#E0E1DD]">${escapeHtml(it.title)}</h3>
                 <p class="text-xs text-[#778DA9]">${escapeHtml(it.weight || 'Silver Item')}</p>
-                <span class="inline-block mt-1 text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-700/50">Category: ${escapeHtml(it.page.replace('.html', ''))}</span>
+                <span class="inline-block mt-1 text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-700/50">Category: ${escapeHtml(categoryName)}</span>
               </div>
             </div>
           </div>`;

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plain Silver Collection - Sri Nakoda Silver</title>
+  
+  <!-- Tailwind CSS v4 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style>
+    /* Smooth Animations for Image Preview Modal */
+    @keyframes modalPopIn {
+      0% { opacity: 0; transform: scale(0.92) translateY(12px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    @keyframes modalFadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .animate-modal-pop {
+      animation: modalPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .animate-modal-fade {
+      animation: modalFadeIn 0.25s ease-out forwards;
+    }
+
+    /* Scroll Animation Styles */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(30px) scale(0.96);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .scroll-reveal.revealed {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-r from-[#08111a] via-[#1B263B] to-[#131923] text-[#E0E1DD] min-h-screen flex flex-col select-none">
+
+<!-- ==========================================
+     HEADER SECTION (Sticky Glassmorphism Header)
+========================================== -->
+<header id="main-header" class="w-full fixed top-0 left-0 z-50 transition-transform duration-300 ease-in-out bg-[#1B263B]/75 backdrop-blur-md shadow-lg border-b border-[#778DA9]/30">
+  
+  <!-- Top Bar -->
+  <div id="top-bar" class="w-full bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-4">
+        
+        <!-- Back Button + Mobile Menu Icon + Brand Logo -->
+        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+          <button 
+            onclick="history.back()" 
+            aria-label="Go Back"
+            class="p-2 text-[#778DA9] hover:text-[#E0E1DD] hover:bg-[#778DA9]/20 rounded-full transition-colors cursor-pointer"
+            title="Go Back"
+          >
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+            </svg>
+          </button>
+
+          <button 
+            id="mobile-menu-btn"
+            type="button" 
+            aria-label="Open Navigation Menu"
+            class="md:hidden p-1.5 text-[#778DA9] hover:text-[#E0E1DD] focus:outline-none rounded-md cursor-pointer"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+
+          <a href="index.html" aria-label="Sri Nakoda Silver Home" class="flex items-center">
+            <span class="text-base sm:text-2xl font-serif font-bold text-[#778DA9] tracking-wider">
+              Sri Nakoda Silver<span class="text-[#E0E1DD]">.</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="flex-1 max-w-xl mx-2 sm:mx-4">
+          <form onsubmit="return false;" method="GET" role="search" class="relative flex items-center">
+            <label for="site-search" class="sr-only">Search plain silver products</label>
+            
+            <div class="absolute left-3 top-1/2 -translate-y-1/2 text-[#778DA9]">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+            </div>
+
+            <input 
+              type="search" 
+              id="site-search" 
+              placeholder="Search plain silver payal, kada, chain..." 
+              class="w-full text-[#E0E1DD] placeholder-[#778DA9] pl-8 sm:pl-10 pr-14 sm:pr-20 py-1.5 sm:py-2.5 bg-[#0D1B2A]/80 border border-[#778DA9]/50 rounded-full text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-[#778DA9] focus:bg-[#1B263B] transition-all"
+            />
+
+            <!-- <div class="absolute right-2.5 sm:right-3.5 top-1/2 -translate-y-1/2 flex items-center gap-1.5 sm:gap-2 text-[#778DA9]">
+              <button type="button" aria-label="Search by image" class="hover:text-[#E0E1DD]">
+                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                  <circle cx="12" cy="13" r="3"/>
+                </svg>
+              </button>
+            </div> -->
+          </form>
+        </div>
+
+        <!-- Action Icons (Right Side) -->
+        <div class="flex items-center gap-2 sm:gap-5 text-[#778DA9] shrink-0">
+          
+          <!-- Call Store Button with Animated Hover Popup -->
+          <div class="relative group flex items-center">
+            <a href="tel:+919392559904" aria-label="Call Store"
+              class="p-2 text-[#E0E1DD] bg-[#0D1B2A] hover:bg-[#415A6A] rounded-full border border-[#415A6A] transition-all duration-300 flex items-center justify-center group-hover:scale-105">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />                                  
+              </svg>
+            </a>
+
+            <!-- Animated Call Popup Box -->
+            <div class="absolute top-full right-0 mt-3 hidden group-hover:flex flex-col gap-1 w-48 p-3 bg-[#0D1B2A]/95 border border-[#415A6A] rounded-xl shadow-2xl backdrop-blur-md opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-300 ease-out z-50 pointer-events-none group-hover:pointer-events-auto">
+              <div class="absolute -top-1.5 right-3 w-3 h-3 bg-[#0D1B2A] border-l border-t border-[#415A6A] rotate-45"></div>
+              <div class="flex items-center gap-1.5 text-xs font-semibold text-[#E0E1DD]">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-sky-500"></span>
+                </span>
+                <span>Call Store Support</span>
+              </div>
+              <p class="text-[11px] text-[#778DA9] leading-tight mt-0.5">
+                Direct assistance at <span class="text-[#E0E1DD] font-medium">+91 9392559904</span>
+              </p>
+              <div class="mt-1 pt-1.5 border-t border-[#778DA9]/20 flex items-center justify-between text-[10px] font-medium text-[#E0E1DD]">
+                <span>Click to Call</span>
+              </div>
+            </div>
+          </div>       
+
+          <!-- WhatsApp Button with Animated Hover Popup -->
+          <div class="relative group flex items-center">
+            <a href="https://wa.me/919392559904?text=Hi%20Sri%20Nakoda%20Silver,%20I%20have%20an%20inquiry"
+              target="_blank" aria-label="WhatsApp Store"
+              class="p-2 text-emerald-400 bg-emerald-950/40 hover:bg-emerald-900/60 rounded-full border border-emerald-700/50 transition-all duration-300 flex items-center justify-center group-hover:scale-105">
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+              </svg>
+            </a>
+
+            <div class="absolute top-full right-0 mt-3 hidden group-hover:flex flex-col gap-1 w-48 p-3 bg-[#0D1B2A]/95 border border-emerald-700/40 rounded-xl shadow-2xl backdrop-blur-md opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-300 ease-out z-50 pointer-events-none group-hover:pointer-events-auto">
+              <div class="absolute -top-1.5 right-3 w-3 h-3 bg-[#0D1B2A] border-l border-t border-emerald-700/40 rotate-45"></div>
+              <div class="flex items-center gap-1.5 text-xs font-semibold text-emerald-400">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span>WhatsApp Support</span>
+              </div>
+              <p class="text-[11px] text-[#778DA9] leading-tight mt-0.5">
+                Instant query & custom jewellery assistance.
+              </p>
+            </div>
+          </div>                       
+          
+          <!-- Store Location Link with Animated Hover Popup -->
+          <div class="relative group flex items-center">
+            <a href="store.html" aria-label="Find Nearby Jewelry Stores" title="Store Location" class="flex items-center gap-2 p-1 text-[#778DA9] hover:text-[#E0E1DD] transition-all duration-300">
+              <div class="p-2 rounded-full bg-[#0D1B2A]/60 border border-[#778DA9]/30 group-hover:bg-[#415A77]/40 group-hover:border-[#E0E1DD]/50 group-hover:scale-105 shadow-sm transition-all duration-300 flex items-center justify-center shrink-0">
+                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-[#778DA9] group-hover:text-[#E0E1DD] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+            </a>
+
+            <div class="absolute top-full right-0 mt-3 hidden group-hover:flex flex-col gap-1 w-48 p-3 bg-[#0D1B2A]/95 border border-[#778DA9]/40 rounded-xl shadow-2xl backdrop-blur-md opacity-0 group-hover:opacity-100 scale-95 group-hover:scale-100 transition-all duration-300 ease-out z-50 pointer-events-none group-hover:pointer-events-auto">
+              <div class="absolute -top-1.5 right-6 w-3 h-3 bg-[#0D1B2A] border-l border-t border-[#778DA9]/40 rotate-45"></div>
+              <div class="flex items-center gap-1.5 text-xs font-semibold text-[#E0E1DD]">
+                <svg class="w-3.5 h-3.5 text-emerald-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+                  <circle cx="10" cy="10" r="5"/>
+                </svg>
+                <span>Visit Our Store</span>
+              </div>
+              <p class="text-[11px] text-[#778DA9] leading-tight mt-0.5">
+                Explore physical silver collections.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Nav Links -->
+  <nav aria-label="Category Navigation" class="border-t border-[#778DA9]/20 bg-transparent hidden md:block">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <ul class="flex items-center justify-between py-2.5 text-xs font-semibold text-[#778DA9] tracking-wider uppercase">
+        <li><a href="antique.html" class="flex items-center gap-1.5 hover:text-[#E0E1DD] py-1 transition-colors">Antiques</a></li>
+        <li><a href="plain.html" class="flex items-center gap-1.5 text-[#E0E1DD] font-bold py-1 border-b-2 border-[#778DA9]">Plain</a></li>
+        <li><a href="templejewellery.html" class="flex items-center gap-1.5 hover:text-[#E0E1DD] py-1 transition-colors">Temple Jewellery</a></li>
+        <li><a href="gold-polished.html" class="flex items-center gap-1.5 hover:text-[#E0E1DD] py-1 transition-colors">Gold Polished</a></li>
+        <li><a href="wooden.html" class="flex items-center gap-1.5 hover:text-[#E0E1DD] py-1 transition-colors">Wooden Items</a></li>
+        <li><a href="jewellery.html" class="flex items-center gap-1.5 hover:text-[#E0E1DD] py-1 transition-colors">Jewellery</a></li>
+      </ul>
+    </div>
+  </nav>
+
+</header>
+
+<div class="h-20 md:h-28"></div>
+
+<!-- Mobile Drawer Navigation -->
+<div id="mobile-menu-overlay" class="fixed inset-0 bg-black/60 z-50 hidden md:hidden transition-opacity duration-300"></div>
+<aside id="mobile-menu-drawer" class="fixed top-0 left-0 w-72 h-full bg-[#1B263B] border-r border-[#778DA9]/30 z-50 transform -translate-x-full transition-transform duration-300 md:hidden flex flex-col">
+  <div class="flex items-center justify-between p-4 border-b border-[#778DA9]/30">
+    <span class="font-serif font-bold text-[#E0E1DD]">Categories</span>
+    <button id="close-menu-btn" class="p-1 text-[#E0E1DD] hover:text-[#778DA9] text-xl cursor-pointer">&times;</button>
+  </div>
+  <nav class="flex-1 overflow-y-auto p-4">
+    <ul class="space-y-2 text-sm font-medium text-[#778DA9]">
+      <li><a href="antique.html" class="block p-2 rounded hover:bg-[#778DA9]/20 hover:text-[#E0E1DD]">Antiques</a></li>
+      <li><a href="plain.html" class="block p-2 rounded bg-[#778DA9]/30 text-[#E0E1DD] font-semibold">Plain Silver</a></li>
+      <li><a href="templejewellery.html" class="block p-2 rounded hover:bg-[#778DA9]/20 hover:text-[#E0E1DD]">Temple Jewellery</a></li>
+      <li><a href="gold-polished.html" class="block p-2 rounded hover:bg-[#778DA9]/20 hover:text-[#E0E1DD]">Gold Polished</a></li>
+      <li><a href="wooden.html" class="block p-2 rounded hover:bg-[#778DA9]/20 hover:text-[#E0E1DD]">Wooden Items</a></li>
+      <li><a href="jewellery.html" class="block p-2 rounded hover:bg-[#778DA9]/20 hover:text-[#E0E1DD]">Jewellery</a></li>
+    </ul>
+  </nav>
+</aside>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Sahi ID 'site-search' use ki gayi hai
+    const searchInput = document.getElementById('site-search'); 
+    const heroBanner = document.getElementById('hero-banner');
+
+    if (searchInput && heroBanner) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim();
+        
+        if (query.length > 0) {
+          heroBanner.classList.add('hidden');
+        } else {
+          heroBanner.classList.remove('hidden');
+        }
+      });
+    }
+  });
+</script>
+
+<!-- MAIN CONTENT -->
+<main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+  <section id="hero-banner">
+  <div class="mb-4">
+    <button onclick="history.back()" class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-[#1B263B] border border-[#778DA9]/40 text-[#778DA9] hover:text-[#E0E1DD] transition-all text-xs sm:text-sm font-medium cursor-pointer shadow-sm">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+      <span>Back</span>
+    </button>
+  </div>
+
+  <section class="scroll-reveal relative rounded-2xl overflow-hidden bg-gradient-to-r from-[#0D1B2A] via-[#1B263B] to-[#415A77]/40 border border-[#778DA9]/30 p-6 sm:p-10 mb-8 shadow-md">
+    <div class="max-w-2xl">
+      <span class="text-xs sm:text-sm font-semibold text-[#778DA9] uppercase tracking-widest">Pure & Elegant</span>
+      <h1 class="text-2xl sm:text-4xl font-serif font-bold text-[#E0E1DD] mt-1 mb-3">Plain Silver Collection</h1>
+      <p class="text-xs sm:text-sm text-[#778DA9] leading-relaxed">
+        Explore our hallmark 92.5 & 99.0 pure plain silver collection. Click "Know Price" on any item to get instant live prices directly on WhatsApp.
+      </p>
+    </div>
+  </section>
+
+  <!-- Filter & Sorting Bar -->
+  <section class="scroll-reveal flex flex-wrap items-center justify-between gap-4 bg-[#0D1B2A]/70 border border-[#778DA9]/30 rounded-xl p-3 sm:p-4 mb-8">
+    <div class="flex items-center justify-between md:justify-end gap-3 w-full md:w-auto text-xs sm:text-sm">
+      <span class="text-[#778DA9] font-medium">Sort By:</span>
+      <select id="sort-select" class="bg-[#1B263B] text-[#E0E1DD] border border-[#778DA9]/40 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-[#778DA9] cursor-pointer">
+        <option value="default">Featured Items</option>
+        <option value="weight-low">Weight: Low to High</option>
+        <option value="weight-high">Weight: High to Low</option>
+        <option value="name-az">Name: A to Z</option>
+      </select>
+    </div>
+  </section>
+  </section>
+  <!-- Product Grid Section -->
+  <section id="product-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
+
+    <!-- Card 1 -->
+    <div class="product-card scroll-reveal group bg-[#0D1B2A]/80 border border-[#778DA9]/30 rounded-2xl overflow-hidden hover:border-[#778DA9] transition-all duration-300 flex flex-col cursor-pointer" data-weight="45" data-name="Plain Sterling Silver Payal">
+      <div class="relative w-full aspect-square overflow-hidden bg-[#1B263B]">
+        <span class="absolute top-2.5 left-2.5 z-10 bg-[#778DA9] text-[#1B263B] text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded shadow">925 Silver</span>
+        <img src="images/slide0.png" alt="Plain Sterling Silver Payal" class="product-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+      </div>
+      <div class="p-3 sm:p-4 flex flex-col flex-1 justify-between gap-3">
+        <div>
+          <h3 class="product-title text-xs sm:text-sm font-serif font-semibold text-[#E0E1DD] group-hover:text-[#778DA9] transition-colors line-clamp-1">Plain Sterling Silver Payal</h3>
+          <p class="product-purity text-[11px] sm:text-xs text-[#778DA9] mt-1">Approx. Weight: 45g</p>
+        </div>
+        <a href="https://wa.me/919392559904?text=Hello%20Sri%20Nakoda%20Silver,%20I%20want%20to%20know%20the%20price%20of:%20Plain%20Sterling%20Silver%20Payal" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all shadow-md active:scale-95">
+          <span>Know Price</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="product-card scroll-reveal group bg-[#0D1B2A]/80 border border-[#778DA9]/30 rounded-2xl overflow-hidden hover:border-[#778DA9] transition-all duration-300 flex flex-col cursor-pointer" data-weight="60" data-name="Classic Solid Plain Silver Kada">
+      <div class="relative w-full aspect-square overflow-hidden bg-[#1B263B]">
+        <span class="absolute top-2.5 left-2.5 z-10 bg-[#778DA9] text-[#1B263B] text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded shadow">990 Pure</span>
+        <img src="images/slide0.png" alt="Classic Solid Plain Silver Kada" class="product-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+      </div>
+      <div class="p-3 sm:p-4 flex flex-col flex-1 justify-between gap-3">
+        <div>
+          <h3 class="product-title text-xs sm:text-sm font-serif font-semibold text-[#E0E1DD] group-hover:text-[#778DA9] transition-colors line-clamp-1">Classic Solid Plain Silver Kada</h3>
+          <p class="product-purity text-[11px] sm:text-xs text-[#778DA9] mt-1">Approx. Weight: 60g</p>
+        </div>
+        <a href="https://wa.me/919392559904?text=Hello%20Sri%20Nakoda%20Silver,%20I%20want%20to%20know%20the%20price%20of:%20Classic%20Solid%20Plain%20Silver%20Kada" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all shadow-md active:scale-95">
+          <span>Know Price</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="product-card scroll-reveal group bg-[#0D1B2A]/80 border border-[#778DA9]/30 rounded-2xl overflow-hidden hover:border-[#778DA9] transition-all duration-300 flex flex-col cursor-pointer" data-weight="20" data-name="Pure Silver Smooth Box Chain">
+      <div class="relative w-full aspect-square overflow-hidden bg-[#1B263B]">
+        <span class="absolute top-2.5 left-2.5 z-10 bg-[#778DA9] text-[#1B263B] text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded shadow">925 Silver</span>
+        <img src="images/slide0.png" alt="Pure Silver Smooth Box Chain" class="product-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+      </div>
+      <div class="p-3 sm:p-4 flex flex-col flex-1 justify-between gap-3">
+        <div>
+          <h3 class="product-title text-xs sm:text-sm font-serif font-semibold text-[#E0E1DD] group-hover:text-[#778DA9] transition-colors line-clamp-1">Pure Silver Smooth Box Chain</h3>
+          <p class="product-purity text-[11px] sm:text-xs text-[#778DA9] mt-1">Approx. Weight: 20g</p>
+        </div>
+        <a href="https://wa.me/919392559904?text=Hello%20Sri%20Nakoda%20Silver,%20I%20want%20to%20know%20the%20price%20of:%20Pure%20Silver%20Smooth%20Box%20Chain" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all shadow-md active:scale-95">
+          <span>Know Price</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="product-card scroll-reveal group bg-[#0D1B2A]/80 border border-[#778DA9]/30 rounded-2xl overflow-hidden hover:border-[#778DA9] transition-all duration-300 flex flex-col cursor-pointer" data-weight="85" data-name="Plain Silver Drinking Glass">
+      <div class="relative w-full aspect-square overflow-hidden bg-[#1B263B]">
+        <span class="absolute top-2.5 left-2.5 z-10 bg-[#778DA9] text-[#1B263B] text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded shadow">999 Silver</span>
+        <img src="images/slide0.png" alt="Plain Silver Drinking Glass" class="product-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+      </div>
+      <div class="p-3 sm:p-4 flex flex-col flex-1 justify-between gap-3">
+        <div>
+          <h3 class="product-title text-xs sm:text-sm font-serif font-semibold text-[#E0E1DD] group-hover:text-[#778DA9] transition-colors line-clamp-1">Plain Silver Drinking Glass</h3>
+          <p class="product-purity text-[11px] sm:text-xs text-[#778DA9] mt-1">Approx. Weight: 85g</p>
+        </div>
+        <a href="https://wa.me/919392559904?text=Hello%20Sri%20Nakoda%20Silver,%20I%20want%20to%20know%20the%20price%20of:%20Plain%20Silver%20Drinking%20Glass" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all shadow-md active:scale-95">
+          <span>Know Price</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="product-card scroll-reveal group bg-[#0D1B2A]/80 border border-[#778DA9]/30 rounded-2xl overflow-hidden hover:border-[#778DA9] transition-all duration-300 flex flex-col cursor-pointer" data-weight="8" data-name="Plain High-Gloss Silver Band Ring">
+      <div class="relative w-full aspect-square overflow-hidden bg-[#1B263B]">
+        <span class="absolute top-2.5 left-2.5 z-10 bg-[#778DA9] text-[#1B263B] text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded shadow">925 Silver</span>
+        <img src="images/slide0.png" alt="Plain High-Gloss Silver Band Ring" class="product-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+      </div>
+      <div class="p-3 sm:p-4 flex flex-col flex-1 justify-between gap-3">
+        <div>
+          <h3 class="product-title text-xs sm:text-sm font-serif font-semibold text-[#E0E1DD] group-hover:text-[#778DA9] transition-colors line-clamp-1">Plain High-Gloss Silver Band Ring</h3>
+          <p class="product-purity text-[11px] sm:text-xs text-[#778DA9] mt-1">Approx. Weight: 8g</p>
+        </div>
+        <a href="https://wa.me/919392559904?text=Hello%20Sri%20Nakoda%20Silver,%20I%20want%20to%20know%20the%20price%20of:%20Plain%20High-Gloss%20Silver%20Band%20Ring" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all shadow-md active:scale-95">
+          <span>Know Price</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 6 (Hidden Initially) -->
+    <div class="product-card scroll-reveal extra-product hidden group bg-[#0D1B2A]/80 border border-[#778DA9]/30 rounded-2xl overflow-hidden hover:border-[#778DA9] transition-all duration-300 flex flex-col cursor-pointer" data-weight="18" data-name="Sleek Plain Silver Daily Bracelet">
+      <div class="relative w-full aspect-square overflow-hidden bg-[#1B263B]">
+        <span class="absolute top-2.5 left-2.5 z-10 bg-[#778DA9] text-[#1B263B] text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded shadow">925 Silver</span>
+        <img src="images/slide0.png" alt="Sleek Plain Silver Daily Bracelet" class="product-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+      </div>
+      <div class="p-3 sm:p-4 flex flex-col flex-1 justify-between gap-3">
+        <div>
+          <h3 class="product-title text-xs sm:text-sm font-serif font-semibold text-[#E0E1DD] group-hover:text-[#778DA9] transition-colors line-clamp-1">Sleek Plain Silver Daily Bracelet</h3>
+          <p class="product-purity text-[11px] sm:text-xs text-[#778DA9] mt-1">Approx. Weight: 18g</p>
+        </div>
+        <a href="https://wa.me/919392559904?text=Hello%20Sri%20Nakoda%20Silver,%20I%20want%20to%20know%20the%20price%20of:%20Sleek%20Plain%20Silver%20Daily%20Bracelet" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all shadow-md active:scale-95">
+          <span>Know Price</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 7 (Hidden Initially) -->
+    <div class="product-card scroll-reveal extra-product hidden group bg-[#0D1B2A]/80 border border-[#778DA9]/30 rounded-2xl overflow-hidden hover:border-[#778DA9] transition-all duration-300 flex flex-col cursor-pointer" data-weight="35" data-name="Pure Plain Silver Pooja Katori">
+      <div class="relative w-full aspect-square overflow-hidden bg-[#1B263B]">
+        <span class="absolute top-2.5 left-2.5 z-10 bg-[#778DA9] text-[#1B263B] text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded shadow">990 Pure</span>
+        <img src="images/slide0.png" alt="Pure Plain Silver Pooja Katori" class="product-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+      </div>
+      <div class="p-3 sm:p-4 flex flex-col flex-1 justify-between gap-3">
+        <div>
+          <h3 class="product-title text-xs sm:text-sm font-serif font-semibold text-[#E0E1DD] group-hover:text-[#778DA9] transition-colors line-clamp-1">Pure Plain Silver Pooja Katori</h3>
+          <p class="product-purity text-[11px] sm:text-xs text-[#778DA9] mt-1">Approx. Weight: 35g</p>
+        </div>
+        <a href="https://wa.me/919392559904?text=Hello%20Sri%20Nakoda%20Silver,%20I%20want%20to%20know%20the%20price%20of:%20Pure%20Plain%20Silver%20Pooja%20Katori" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all shadow-md active:scale-95">
+          <span>Know Price</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Card 8 (Hidden Initially) -->
+    <div class="product-card scroll-reveal extra-product hidden group bg-[#0D1B2A]/80 border border-[#778DA9]/30 rounded-2xl overflow-hidden hover:border-[#778DA9] transition-all duration-300 flex flex-col cursor-pointer" data-weight="6" data-name="Minimal Plain Silver Bali Hoops">
+      <div class="relative w-full aspect-square overflow-hidden bg-[#1B263B]">
+        <span class="absolute top-2.5 left-2.5 z-10 bg-[#778DA9] text-[#1B263B] text-[10px] sm:text-xs font-bold px-2 py-0.5 rounded shadow">925 Silver</span>
+        <img src="images/slide0.png" alt="Minimal Plain Silver Bali Hoops" class="product-img w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"/>
+      </div>
+      <div class="p-3 sm:p-4 flex flex-col flex-1 justify-between gap-3">
+        <div>
+          <h3 class="product-title text-xs sm:text-sm font-serif font-semibold text-[#E0E1DD] group-hover:text-[#778DA9] transition-colors line-clamp-1">Minimal Plain Silver Bali Hoops</h3>
+          <p class="product-purity text-[11px] sm:text-xs text-[#778DA9] mt-1">Approx. Weight: 6g</p>
+        </div>
+        <a href="https://wa.me/919392559904?text=Hello%20Sri%20Nakoda%20Silver,%20I%20want%20to%20know%20the%20price%20of:%20Minimal%20Plain%20Silver%20Bali%20Hoops" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();" class="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-all shadow-md active:scale-95">
+          <span>Know Price</span>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Know More Button -->
+  <div class="scroll-reveal flex justify-center mb-16">
+    <button id="know-more-btn" class="px-8 py-3 rounded-full bg-[#1B263B] border border-[#778DA9]/50 text-[#E0E1DD] font-semibold text-xs sm:text-sm hover:bg-[#778DA9] hover:text-[#1B263B] transition-all shadow-md cursor-pointer flex items-center gap-2">
+      <span>Know More Products</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+    </button>
+  </div>
+
+</main>
+
+<!-- ==========================================
+     IMAGE PREVIEW MODAL (CLEAN FULL-SIZE VIEW)
+========================================== -->
+<div id="image-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-modal-fade">
+  
+  <!-- Outer Wrapper -->
+  <div class="relative w-full max-w-2xl bg-[#0D1B2A] border border-[#778DA9]/40 rounded-2xl shadow-2xl overflow-hidden flex flex-col animate-modal-pop">
+    
+    <!-- Header -->
+    <div class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-[#778DA9]/20 bg-[#1B263B]/60">
+      <div class="flex items-center gap-2">
+        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <h3 id="modal-title" class="text-xs sm:text-base font-serif font-bold text-[#E0E1DD] truncate max-w-[200px] sm:max-w-md">Product Title</h3>
+      </div>
+      
+      <button id="close-modal-btn" aria-label="Close Preview" class="p-1.5 text-[#778DA9] hover:text-[#E0E1DD] hover:bg-[#778DA9]/20 rounded-full transition-colors cursor-pointer">
+        <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Image Container (Clean View Without Nav Buttons) -->
+    <div class="relative w-full h-[55vh] sm:h-[65vh] bg-[#050C14] flex items-center justify-center p-2 sm:p-4 overflow-hidden group">
+      <img id="modal-image" src="" alt="Product Large View" class="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-105" />
+    </div>
+
+    <!-- Footer Bar -->
+    <div class="p-3 sm:p-4 bg-[#0D1B2A] border-t border-[#778DA9]/20 flex items-center justify-between gap-3">
+      <div>
+        <p id="modal-purity" class="text-xs sm:text-sm text-[#778DA9]">Approx. Weight: --</p>
+      </div>
+
+      <a id="modal-whatsapp-link" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 py-2 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs sm:text-sm transition-all shadow-md active:scale-95">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+        </svg>
+        <span>Know Price on WhatsApp</span>
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<footer class="mt-auto border-t border-[#778DA9]/30 bg-[#0D1B2A]/80 py-6 text-center text-xs text-[#E0E1DD] space-y-2">
+  <p>© 2026 Sri Nakoda Silver. All Rights Reserved.</p>
+  <div class="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 font-medium text-[#E0E1DD]">
+    <span>Designed & Developed by</span>
+    <span class="text-[#E0E1DD] font-bold">Sumit Sharma</span>
+    <span class="hidden sm:inline text-[#778DA9]">•</span>
+    <a href="tel:+917877807071" class="hover:text-[#778DA9] transition-colors">+91 7877807071</a>
+    <span class="hidden sm:inline text-[#778DA9]">•</span>
+    <a href="mailto:ss7675088@gmail.com" class="hover:text-[#778DA9] transition-colors">ss7675088@gmail.com</a>
+  </div>
+</footer>
+
+<!-- JavaScript Logic -->
+<script>
+// 1. SMART HEADER SCROLL
+let lastScrollTop = 0;
+window.addEventListener('scroll', () => {
+  const mainHeader = document.getElementById('main-header');
+  const topBar = document.getElementById('top-bar');
+  if (!mainHeader || !topBar) return;
+
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const topBarHeight = topBar.offsetHeight;
+
+  if (scrollTop > lastScrollTop && scrollTop > topBarHeight) {
+    mainHeader.style.transform = `translateY(-${topBarHeight}px)`;
+  } else {
+    mainHeader.style.transform = 'translateY(0)';
+  }
+  lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+}, { passive: true });
+
+// 2. MOBILE NAVIGATION DRAWER
+const initMobileMenu = () => {
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const closeBtn = document.getElementById('close-menu-btn');
+  const overlay = document.getElementById('mobile-menu-overlay');
+  const drawer = document.getElementById('mobile-menu-drawer');
+
+  if (!menuBtn || !drawer || !overlay) return;
+
+  const openMenu = () => {
+    overlay.classList.remove('hidden');
+    setTimeout(() => {
+      overlay.classList.add('opacity-100');
+      drawer.classList.remove('-translate-x-full');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeMenu = () => {
+    drawer.classList.add('-translate-x-full');
+    overlay.classList.remove('opacity-100');
+    setTimeout(() => {
+      overlay.classList.add('hidden');
+      document.body.style.overflow = 'auto';
+    }, 300);
+  };
+
+  menuBtn.onclick = openMenu;
+  if (closeBtn) closeBtn.onclick = closeMenu;
+  overlay.onclick = closeMenu;
+};
+
+// 3. SHOW HIDDEN PRODUCTS ON "KNOW MORE" CLICK
+const initKnowMoreToggle = () => {
+  const knowMoreBtn = document.getElementById('know-more-btn');
+  if (!knowMoreBtn) return;
+
+  knowMoreBtn.addEventListener('click', () => {
+    const hiddenProducts = document.querySelectorAll('.extra-product');
+    hiddenProducts.forEach(product => {
+      product.classList.remove('hidden');
+    });
+    knowMoreBtn.parentElement.style.display = 'none';
+    // Re-trigger reveal animation check for newly visible items
+    triggerScrollObserver();
+  });
+};
+
+// 4. SORTING FUNCTIONALITY
+const initSorting = () => {
+  const sortSelect = document.getElementById('sort-select');
+  const grid = document.getElementById('product-grid');
+  if (!sortSelect || !grid) return;
+
+  const originalCards = Array.from(grid.children);
+
+  sortSelect.addEventListener('change', (e) => {
+    const value = e.target.value;
+    let cards = Array.from(grid.children);
+
+    if (value === 'weight-low') {
+      cards.sort((a, b) => parseFloat(a.dataset.weight) - parseFloat(b.dataset.weight));
+    } else if (value === 'weight-high') {
+      cards.sort((a, b) => parseFloat(b.dataset.weight) - parseFloat(a.dataset.weight));
+    } else if (value === 'name-az') {
+      cards.sort((a, b) => a.dataset.name.localeCompare(b.dataset.name));
+    } else {
+      cards = [...originalCards];
+    }
+
+    cards.forEach(card => grid.appendChild(card));
+  });
+};
+
+// 5. PRODUCT IMAGE PREVIEW MODAL
+const initImageModal = () => {
+  const modal = document.getElementById('image-modal');
+  const modalImg = document.getElementById('modal-image');
+  const modalTitle = document.getElementById('modal-title');
+  const modalPurity = document.getElementById('modal-purity');
+  const modalWaLink = document.getElementById('modal-whatsapp-link');
+  const closeBtn = document.getElementById('close-modal-btn');
+
+  const openModal = (card) => {
+    const imgSrc = card.querySelector('.product-img')?.src || '';
+    const title = card.querySelector('.product-title')?.innerText || '';
+    const purity = card.querySelector('.product-purity')?.innerText || '';
+    const waHref = card.querySelector('a')?.href || '#';
+
+    modalImg.src = imgSrc;
+    modalTitle.innerText = title;
+    modalPurity.innerText = purity;
+    modalWaLink.href = waHref;
+
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  };
+
+  document.getElementById('product-grid')?.addEventListener('click', (e) => {
+    const card = e.target.closest('.product-card');
+    if (!card) return;
+    openModal(card);
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+};
+
+// 6. SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)
+let scrollObserver;
+const triggerScrollObserver = () => {
+  const elements = document.querySelectorAll('.scroll-reveal:not(.revealed)');
+
+  if ('IntersectionObserver' in window) {
+    if (scrollObserver) scrollObserver.disconnect();
+
+    scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          scrollObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    elements.forEach(el => scrollObserver.observe(el));
+  } else {
+    // Fallback for older browsers
+    elements.forEach(el => el.classList.add('revealed'));
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  initMobileMenu();
+  initKnowMoreToggle();
+  initSorting();
+  initImageModal();
+  triggerScrollObserver();
+});
+</script>
+
+<script src="public/search.js" defer></script>
+
+</body>
+</html>
